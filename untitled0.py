@@ -13,6 +13,6 @@ def one(l):
             f'{l[indrow][indcolumn] = }') if minmaxrow == maxminrow  else  'нет седловой точки'
     
 if __name__ == '__main__':
-    print(one(l = [[5, 4, 8, 9, 6, 8, 4, 5, 6],
+    print(one([[5, 4, 8, 9, 6, 8, 4, 5, 6],
                    [1, 6, 9, 4, 3, 6, 8, 2, 7]]))
-    print(one([1,2,3,4],[2,3,4,5]))
+    print(one([[1,2,3,4],[2,3,4,5]]))
