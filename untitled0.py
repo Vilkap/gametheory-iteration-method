@@ -53,22 +53,35 @@ def itermethod(l):
     print(f'{max(gamma1) = }')
     print(f'{min(gamma2) = }')
     print(f'{Δk[-1] = }')
+    return gamma1, gamma2
 
+def showgamma(g1,g2):
+    import matplotlib.pyplot as plt
+    x = [i for i in range(1,len(g1) + 1)]
+    plt.figure(figsize=(40, 20))
 
+    plt.plot(x, g1, 'o-b', alpha=0.7, label="γ1", lw=5, mec='g', mew=5, ms=15)
+    plt.plot(x, g2, 'o-g', label="γ2", mec='b', lw=5, mew=5, ms=15)
+    plt.xlabel('k',fontsize = 30)  # подписываем ось x
+    plt.ylabel('γ',fontsize = 30)  # подписываем ось y
+    plt.legend(fontsize = 50)
+    plt.grid(True)
+    plt.savefig('image.png')
+    
 def main():
     l = np.array([[3,6,8,9,1,0,2,4,5],
-              [6,8,4,7,6,9,9,7,5],
-              [6,3,2,3,6,9,4,5,7],
-              [8,9,5,9,6,8,4,7,5],
-              [2,1,3,2,4,5,7,9,8],
-              [6,3,2,5,4,7,8,9,6],
-              [7,8,4,5,6,9,6,5,2],
-              [0,2,7,8,4,5,9,6,3],
-              [7,8,5,2,7,4,7,5,2]])
-
+                  [6,8,4,7,6,9,9,7,5],
+                  [6,3,2,3,6,9,4,5,7],
+                  [8,9,5,9,6,8,4,7,5],
+                  [2,1,3,2,4,5,7,9,8],
+                  [6,3,2,5,4,7,8,9,6],
+                  [7,8,4,5,6,9,6,5,2],
+                  [0,2,7,8,4,5,9,6,3],
+                  [7,8,5,2,7,4,7,5,2]])
     print(one(l))
     if one(l) == 'нет седловой точки':
-        print(itermethod(l))  
+        g1,g2 = itermethod(l)
+        showgamma(g1, g2)
 
 if __name__ == '__main__':
     main()
